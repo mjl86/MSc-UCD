@@ -1,0 +1,3 @@
+[submodule "Dublin-Bus-App"]
+	path = Dublin-Bus-App
+	url = https://github.com/AdamMcCarthyCompSci/Dublin-Bus-App.git
