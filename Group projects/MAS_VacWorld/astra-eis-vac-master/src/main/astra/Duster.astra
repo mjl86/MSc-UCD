@@ -1,0 +1,258 @@
+
+// Duster agents that receive dust locations from the Bidder ("Decco") and respond with their calculated distance
+// The winning duster is considered 'seeking()' and moves to the auctioned dust (must reach the destination within a certain number of iterations)
+// Moves random except when seeking()
+
+agent Duster {
+    module System S;
+    module Console C;
+    module EIS ei;
+    module Debug D;
+    module Math M;
+    module Random R;
+
+    types actions {
+        formula right(string);
+        formula left(string);
+        formula forward(string);
+        formula here(string);
+        formula current_loc(int, int);
+        formula seeking(int, int);
+        formula task(string);
+        formula monitoring();
+    }
+
+    types auction {
+        formula mydistance(int, string);
+        formula winner(string, int);
+        formula callDistances(int, int);
+    }
+
+    initial current_loc(0, 0);
+
+    rule +!main([string name]) {
+        ei.launch("vw","dependency/vacuumworld-1.2.0.jar");
+		ei.join();
+        ei.link(name);
+        S.sleep(1000);
+        !monitorforCalls();
+    }
+
+    // Method for monitoring for when dust is found to determine which duster might win the auction
+    // A duster that is already +seeking() is not included in a subsequent auction until it is ~seeking()
+    // The bot light turns on when the bot is seeking, and turns off when it is finished
+    goal +!monitorforCalls() {
+        body {
+            // When not monitoring for calls, continue to move around and clean randomly
+            while (true) {
+                while (~monitoring()) {
+                    while (~task("none")) {
+                        S.sleep(1000);
+                    }
+                    S.sleep(1000);
+                    !move();
+                }
+            }
+        }
+        
+        rule @message(inform, string sender, callDistances(int x, int y)) : ~seeking(int i, int j) {
+            +monitoring();
+            C.println("Received message");
+
+            D.dumpBeliefs();
+            while (~task("none")) {
+                S.sleep(500);
+            }
+            query(current_loc(int a, int b));
+            
+            !generate_distance(x, y, a, b, int d);
+            send(propose, sender, mydistance(d, sender));
+        }
+
+        rule @message(reject-proposal, string sender, callDistances(int x, int y)) {
+            int int_x = M.intValue(x + "");
+            int int_y = M.intValue(y + "");
+            -monitoring();
+        }
+
+        rule @message(accept-proposal, string sender, callDistances(int x, int y)) {
+            int int_x = M.intValue(x + "");
+            int int_y = M.intValue(y + "");
+            +seeking(int_x, int_y);
+            -monitoring();
+            ei.light("on");
+        }
+    }
+
+    rule +!generate_distance(int z, int w, int x, int y, int d) {
+        int x_int = M.intValue("" + x);
+        int y_int = M.intValue("" + y);
+        int z_int = M.intValue("" + z);
+        int w_int = M.intValue("" + w);
+        d = ((x_int - z_int)*(x_int - z_int)) + ((y_int - w_int)*(y_int - w_int));
+    }
+
+    rule +!move() : ~seeking(int x, int y) {
+        
+        double randomDir = R.randomIntDir();
+            
+        if (here("dust")) {
+            ei.clean();
+        }
+        if (forward("dust")) {
+            ei.move("forward");
+        }
+        else if(right("dust")) {
+            ei.move("right");
+        }
+        else if(left("dust")) {
+            ei.move("left");
+        }
+        else {
+            if (randomDir >= 0 & randomDir <= 41) {
+                ei.move("forward");
+            }
+            if (randomDir >= 42 & randomDir <= 58) {
+                ei.move("right");
+            }
+            if (randomDir >= 59 & randomDir <= 75) {
+                ei.move("left");
+            }
+            // Can't move back if * 75 in Random.java
+            if (randomDir >= 76 & randomDir <=100) {
+                ei.move("back");
+            }
+        }
+    }
+
+    // Seek out the dust!
+    rule +!move() : seeking(int x, int y) {
+        
+        C.println("Seeking: " + x + ", " + y + "");
+        
+        int int_x = M.intValue(x + "");
+        int int_y = M.intValue(y + "");
+        int Xdelta = 0;
+        int Ydelta = 0;
+        while (~task("none")) {
+            S.sleep(500);
+        }
+        query(current_loc(int xcur, int ycur));
+        int int_xcur = M.intValue(xcur + "");
+        int int_ycur = M.intValue(ycur + "");
+        
+        int i = 0; // 'Force quit' when the duster fails to find the dust within 10 iterations
+        
+        Xdelta = int_xcur - int_x; // east/west
+        Ydelta = int_ycur - int_y; // north/south
+
+        while ((~(Xdelta == 0) | ~(Ydelta == 0)) & (i < 10)) {
+
+            if (forward("vac")) {
+                S.sleep(500);
+            }
+
+            if (forward("obstacle")) {
+                
+                while (~task("none")) {
+                    S.sleep(100);
+                }
+                query(current_loc(int missx, int missy));
+                int int_xmiss = M.intValue(missx + "");
+                int int_ymiss = M.intValue(missy + "");
+                Xdelta = int_xmiss - int_x;
+                Ydelta = int_ymiss - int_y;
+            }
+
+            if (~(Ydelta == 0)) {
+
+                if (Ydelta < 0) {
+                    C.println("Moving " + Ydelta + " south");
+                    Ydelta = 0 - Ydelta;
+                    ei.move("south", Ydelta);
+                }
+                else if (Ydelta > 0) {
+                    C.println("Moving " + Ydelta + " north");
+                    ei.move("north", Ydelta);
+                }
+            }
+
+            S.sleep(500);
+
+            if (~(Xdelta == 0)) {
+                if (Xdelta < 0) {
+                    C.println("Moving " + Xdelta + " east");
+                    Xdelta = 0 - Xdelta;
+                    ei.move("east", Xdelta);
+                }
+                else if (Xdelta > 0) {
+                    C.println("Moving " + Xdelta + " west");
+                    ei.move("west", Xdelta);
+                }
+            }
+
+            S.sleep(2000);
+
+            while (~task("none")) {
+                S.sleep(500);
+            }
+            
+            query(current_loc(int xcur2, int ycur2));
+
+            int int_xcur2 = M.intValue(xcur2 + "");
+            int int_ycur2 = M.intValue(ycur2 + "");
+            Xdelta = int_xcur2 - int_x;
+            Ydelta = int_ycur2 - int_y;
+            
+            if ((Xdelta == 0) & (Ydelta == 0)) {
+                C.println("Do I " + Xdelta + " = 0?");
+                C.println("Do I " + Ydelta + " = 0?");
+                while (~task("none")) {
+                    S.sleep(500);
+                }
+                S.sleep(1000);
+                ei.clean();
+            }
+            i = i + 1;
+        }
+        ei.light("off");
+        -seeking(int_x, int_y);
+    }
+
+    rule +$ei.event(location(int x, int y)) : current_loc(int a, int b) {
+        -current_loc(a, b);
+        +current_loc(x, y);
+    }
+
+    rule +$ei.event(task("move")) {
+        -+task("move");
+    }
+
+    rule +$ei.event(task("clean")) {
+        -+task("clean");
+    }
+
+    rule +$ei.event(task("none")) {
+        -+task("none");
+    }
+
+    rule +$ei.event(task("turn")) {
+        -+task("turn");
+    }
+
+    rule +$ei.event(square("right", string x)) {
+        -+right(x);
+    }
+
+    rule +$ei.event(square("left", string x)) {
+        -+left(x);
+    }
+
+    rule +$ei.event(square("forward", string x)) {
+        -+forward(x);
+    }
+
+    rule +$ei.event(square("here", string x)) {
+        -+here(x);
+    }
+}
