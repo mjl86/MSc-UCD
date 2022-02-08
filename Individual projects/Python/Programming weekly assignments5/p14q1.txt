@@ -1,0 +1,13 @@
+recursive
+10=to fast to get an accurate time.
+100=.18 of a sec
+1000=.23 of a sec
+10000=error couldn't run
+
+non recursive
+10 >.17 of a second
+100 >.21 of a second
+1000=.30 of a second
+10000=.55 of a second but only shows squeezed output
+100000= 9.83 secs only shows squeezed output
+200000=34.96 secs only shows squeezed output

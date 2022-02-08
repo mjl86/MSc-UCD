@@ -1,0 +1,11 @@
+BrokerService.java
+removed service registry import. Imported java.rmi.Remote & java.rmi.RemoteException
+line 11 BrokerSErvice extends Remote
+line 12 throws a RemoteException.
+
+QuotationService.java
+removed service registry import. Imported java.rmi.Remote & java.rmi.RemoteException
+line 12 BrokerSErvice extends Remote
+line 13 throws a RemoteException.
+
+BrokerService.java and QuotationService.java imported java.io.Serializable and implemeted into the class in each file

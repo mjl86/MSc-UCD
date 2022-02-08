@@ -1,0 +1,6 @@
+number of <: 21138
+number of >: 21138
+number of /n: 11
+number of <!--: 1
+number of -->: 1
+number of e: 28408

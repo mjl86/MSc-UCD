@@ -1,0 +1,18 @@
+Question 3
+
+(a)
+A value of none was returned as well as which was the largest number.
+I believe this to be the case as print_max itself doesn't have a value so there is nothing
+for the print function in the program to print. When print_max is called in the program by the return syntax it also runs the nested
+function which then gives the print_max function its values, but these depend on what the user inputs.
+
+
+(b)
+When the () are left out of the print_max function at the end of the program nothing happens the program doesn't run.
+The program doesn't recognise it as print_max() and so doesn't execute. if we do it to print_max in the function we get invalid syntax.
+
+
+(c)
+When the () are put around the print_max function at the end of the program we get a similar response as the last question.
+Nothing happens the program doesn't run. The program doesn't recognise it as print_max() and so doesn't execute.
+If we do it to print_max in the function we get invalid syntax.

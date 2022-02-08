@@ -1,0 +1,12 @@
+Task 1
+All task one completed
+
+Task 2
+All tasks completed
+
+Task 3
+I replicated the implementation for dodgeydrivers and girlpower that i did for auldfellas.
+
+Task four
+An attempt was made but i was unable to successfully implement this with multithreading. 
+I did add a ClientApplicationMessage to the core.messages file and attempted the broker implementation.

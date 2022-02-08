@@ -1,0 +1,6 @@
+recursive
+programme calculated until number 1023 once 1024 entered the program crashed.
+
+
+non recursive
+programme will keep trying to calculate the factorial but will take a signifantly longer time the bigger the number is. and if output is to larges it'll just show a squeezed output.

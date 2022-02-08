@@ -1,0 +1,31 @@
+version: '3'
+services:
+  broker:
+    build: ./broker
+    container_name: broker
+    ports:
+      - "8080:8080"
+  auldfella:
+    #    build: auldfellas
+    build: ./auldfellas
+    container_name: auldfellas
+    ports:
+      - "8081:8081"
+    links:
+      - broker
+  dodgydrivers:
+    #    build: dodgydrivers
+    build: ./dodgydrivers
+    container_name: dodgydrivers
+    ports:
+      - "8082:8082"
+    links:
+      - broker
+  girlpower:
+    #    build: girlpower
+    build: ./girlpower
+    container_name: girlpower
+    ports:
+      - "8083:8083"
+    links:
+      - broker
