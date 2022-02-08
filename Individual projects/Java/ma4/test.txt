@@ -1,0 +1,7 @@
+This is a core module on the MSc Computer Science (Conversion) and Higher Diploma in Computer Science Programmes. 
+This module introduces the Java programming language and builds on the Python programming modules taken in trimester of the programme. 
+The module will begin with a review of the fundamental constructs of programming, such as variables, conditionals, loops, arrays, methods etc., and how these contructs are used to write simple programs using Java. 
+The module will then focus on the object-oriented programming paradigm. 
+Students will learn key object-oriented concepts such as classes, objects, enscapsulation, inheritance and polymorphism. 
+Finally, the module will cover more advanced topics in Java such as exception handling, abstract classes and interfaces, and students will be introduced to larger applications developed using Java. 
+A strong emphasis will be placed on the development of practical programming skills. 
