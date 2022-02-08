@@ -4,3 +4,6 @@
 [submodule "restoverflow"]
 	path = restoverflow
 	url = https://gitlab.com/comp30220/2021/restoverflow
+[submodule "DublinBikes"]
+	path = DublinBikes
+	url = https://github.com/MichelleKyne/DublinBikes.git
