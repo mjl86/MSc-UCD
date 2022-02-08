@@ -1,0 +1,41 @@
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+# platform: win-64
+@EXPLICIT
+https://conda.anaconda.org/conda-forge/win-64/ca-certificates-2020.12.5-h5b45459_0.tar.bz2
+https://conda.anaconda.org/conda-forge/noarch/poppler-data-0.4.10-0.tar.bz2
+https://repo.anaconda.com/pkgs/main/win-64/vs2015_runtime-14.27.29016-h5e58377_2.conda
+https://repo.anaconda.com/pkgs/main/win-64/vc-14.2-h21ff451_1.conda
+https://conda.anaconda.org/conda-forge/win-64/icu-68.1-h0e60522_0.tar.bz2
+https://conda.anaconda.org/conda-forge/win-64/jpeg-9d-h8ffe710_0.tar.bz2
+https://conda.anaconda.org/conda-forge/win-64/libffi-3.3-h0e60522_2.tar.bz2
+https://conda.anaconda.org/conda-forge/win-64/libiconv-1.16-he774522_0.tar.bz2
+https://conda.anaconda.org/conda-forge/win-64/lz4-c-1.9.3-h8ffe710_0.tar.bz2
+https://conda.anaconda.org/conda-forge/win-64/openssl-1.1.1i-h8ffe710_0.tar.bz2
+https://conda.anaconda.org/conda-forge/win-64/pcre-8.44-ha925a31_0.tar.bz2
+https://conda.anaconda.org/conda-forge/win-64/pixman-0.40.0-h8ffe710_0.tar.bz2
+https://conda.anaconda.org/conda-forge/win-64/tk-8.6.10-h8ffe710_1.tar.bz2
+https://conda.anaconda.org/conda-forge/win-64/xz-5.2.5-h62dcd97_1.tar.bz2
+https://repo.anaconda.com/pkgs/main/win-64/zlib-1.2.11-h62dcd97_4.conda
+https://conda.anaconda.org/conda-forge/win-64/gettext-0.19.8.1-h1a89ca6_1005.tar.bz2
+https://conda.anaconda.org/conda-forge/win-64/krb5-1.17.2-hbae68bd_0.tar.bz2
+https://conda.anaconda.org/conda-forge/win-64/libpng-1.6.37-h1d00b33_2.tar.bz2
+https://conda.anaconda.org/conda-forge/win-64/libssh2-1.9.0-hb06d900_5.tar.bz2
+https://conda.anaconda.org/conda-forge/win-64/libxml2-2.9.10-hf5bbc77_3.tar.bz2
+https://repo.anaconda.com/pkgs/main/win-64/sqlite-3.33.0-h2a8f88b_0.conda
+https://conda.anaconda.org/conda-forge/win-64/zstd-1.4.8-h4e2f164_1.tar.bz2
+https://conda.anaconda.org/conda-forge/win-64/freetype-2.10.4-h546665d_1.tar.bz2
+https://conda.anaconda.org/conda-forge/win-64/libcurl-7.71.1-h4b64cdc_8.tar.bz2
+https://conda.anaconda.org/conda-forge/win-64/libglib-2.66.4-h48f9de8_2.tar.bz2
+https://conda.anaconda.org/conda-forge/win-64/libtiff-4.2.0-hc10be44_0.tar.bz2
+https://repo.anaconda.com/pkgs/main/win-64/python-3.8.5-h5fd99cc_1.conda
+https://conda.anaconda.org/conda-forge/win-64/cairo-1.16.0-hba8bd2f_1007.tar.bz2
+https://conda.anaconda.org/conda-forge/win-64/fontconfig-2.13.1-h1989441_1004.tar.bz2
+https://conda.anaconda.org/conda-forge/win-64/openjpeg-2.4.0-h48faf41_0.tar.bz2
+https://conda.anaconda.org/conda-forge/win-64/python_abi-3.8-1_cp38.tar.bz2
+https://repo.anaconda.com/pkgs/main/noarch/wheel-0.36.2-pyhd3eb1b0_0.conda
+https://repo.anaconda.com/pkgs/main/win-64/wincertstore-0.2-py38_0.conda
+https://conda.anaconda.org/conda-forge/win-64/certifi-2020.12.5-py38haa244fe_1.tar.bz2
+https://conda.anaconda.org/conda-forge/win-64/poppler-21.01.0-h20e2fe3_0.tar.bz2
+https://repo.anaconda.com/pkgs/main/win-64/setuptools-52.0.0-py38haa95532_0.conda
+https://repo.anaconda.com/pkgs/main/win-64/pip-20.3.3-py38haa95532_0.conda

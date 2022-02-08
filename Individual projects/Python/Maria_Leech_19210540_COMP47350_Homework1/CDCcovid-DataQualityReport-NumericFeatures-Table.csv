@@ -1,0 +1,13 @@
+Feature,count,unique,top,freq,card,%missing
+cdc_case_earliest_dt,10000,322,2021/01/04,119,322,0.0
+cdc_report_dt,7672,327,2020/06/10,140,327,23.28
+pos_spec_dt,2866,311,2021/01/11,35,311,71.34
+onset_dt,5042,324,2020/11/20,44,324,49.58
+current_status,10000,2,Laboratory-confirmed case,9307,2,0.0
+sex,10000,4,Female,5183,4,0.0
+age_group,10000,10,20 - 29 Years,1885,10,0.0
+race_ethnicity_combined,10000,9,Unknown,4020,9,0.0
+hosp_yn,10000,4,No,5167,4,0.0
+icu_yn,10000,4,Missing,7603,4,0.0
+death_yn,10000,2,No,9655,2,0.0
+medcond_yn,10000,4,Missing,7438,4,0.0
