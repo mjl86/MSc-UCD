@@ -1,2 +1,2 @@
 # MSc-UCD
-This repository is a show case of all my UCD MSC Computer Science (conversion) college assignments. It is broken up into two sections individual assignemnts and group projects.
+This repository is a show case of all my UCD MSC Computer Science (conversion) college assignments. It is broken up into three sections individual assignemnts and group projects. The third section is my three month research praticum completed over the summer of 2021 in a group of four. Programmes include my very first hello world program from semester one to the more advanced programmes completed in semester four like the distributed system programs and Multi-agent system programs.
