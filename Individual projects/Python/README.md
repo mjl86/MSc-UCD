@@ -1,0 +1,2 @@
+MyGaussianNB is my implementation of Scikit learns Gaussian processes.
+COMP20230_Assignment2.ipynb explores data structures such as Linked Lists, Stacks and Queues. It includes my methods to replicate the various operations taht can be done on these data types.
